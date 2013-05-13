@@ -3,6 +3,7 @@ set autochdir
 set invnumber
 set novisualbell
 set wildignorecase
+nnoremap <leader>q :only<cr>
 
 " Python mode not working well.
 let g:pymode_run=0
