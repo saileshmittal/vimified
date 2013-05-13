@@ -7,5 +7,4 @@ nnoremap <leader>q :only<cr>
 
 " Python mode not working well.
 let g:pymode_run=0
-let g:pymore_run_key=
 let g:pymode_lint=0
