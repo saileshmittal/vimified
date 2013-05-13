@@ -1,0 +1,5 @@
+filetype on
+set autochdir
+set invnumber
+set novisualbell
+set wildignorecase
