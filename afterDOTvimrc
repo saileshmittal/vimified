@@ -2,7 +2,9 @@ filetype on
 set autochdir
 set invnumber
 set novisualbell
-set wildignorecase
+if exists("&wildignorecase")
+        set wildignorecase
+    endif
 nnoremap <leader>q :only<cr>
 
 " Python mode not working well.
