@@ -1,5 +1,4 @@
-vimified
-========
+# vimified
 
 > Frankly, my dear, you're gonna be vimified one day!
 
@@ -7,8 +6,7 @@ Kick-ass Vim configuration framework, built on top of *awesome* [Vundle](https:/
 
 ![ctrlp view](http://f.cl.ly/items/3a0X3F3x3r0K1n1u1Y2r/vimified.png)
 
-How to install
---------------
+## How to install
 
 ### For lazy people
 
@@ -22,21 +20,20 @@ Grab the project:
 
     cd
     git clone git://github.com/zaiste/vimified.git
-    ln -sfn vimified ~/.vim
+    ln -sfn vimified/ ~/.vim
     ln -sfn vimified/vimrc ~/.vimrc
     cd vimified
 
-Create required directories
+Create required directories:
 
     mkdir bundle
     mkdir -p tmp/backup tmp/swap tmp/undo
 
-Set up Vundle
+Set up Vundle:
 
     git clone https://github.com/gmarik/vundle.git bundle/vundle
 
-Set up your local configuration via `local.vimrc` file and choose package you
-want to use:
+Set up your `local.vimrc` file with packages you want:
 
     echo "let g:vimified_packages = ['general', 'coding', 'clojure', 'color']" > local.vimrc
 
@@ -46,17 +43,20 @@ Install plugins:
 
 Enjoy!
 
-Configuration
--------------
+## Configuration
 
 You can overwrite default configuration and key bindings by using one of following files:
 
 `~/.vim/before.vimrc` will be loaded before everything else.
 
-`~/.vim/after.vimrc` will be loaded after all configuration options are set. This is best place to change vimified default behaviour (keybindings) and/or color scheme.
+`~/.vim/extra.vimrc` will be loaded after Vundle is initialized and before
+Vimified settings take place. The idea was so people could add Bundle lines
+without having to worry about conflicts in vimrc when pulling. [Read
+More](https://github.com/zaiste/vimified/pull/27).
 
-Packages
---------
+`~/.vim/after.vimrc` will be loaded after all configuration options are set. This is the best place to change vimified default behaviour (key bindings) and/or color scheme.
+
+## Packages
 
 Inside your local configuration file `$HOME/.vim/local.vimrc` set `g:vimified_packages` variable with packages you want to use.
 
@@ -64,10 +64,11 @@ For example, if you are only interested in Ruby/Rails related stuff, put somethi
 
     let g:vimified_packages = ['general', 'coding', 'ruby', 'color']
 
-Avaible packages:
+Available packages:
 
  * general
  * fancy
+ * indent
  * os
  * coding
  * ruby
@@ -76,13 +77,23 @@ Avaible packages:
  * js
  * clojure
  * haskell
+ * elixir
  * color
+ * python
+ * go
+ * elm
+ * rust
 
 ### General
 
-#### [ack.vim](http://github.com/mileszs/ack.vim)
+#### [EditorConfig](https://github.com/editorconfig/editorconfig-vim)
 
-Vim plugin for the Perl module / CLI script 'ack'.
+[EditorConfig](http://editorconfig.org) plugin for Vim.
+
+#### [ag.vim](https://github.com/rking/ag.vim)
+
+Vim plugin for the_silver_searcher, 'ag', a replacement for the Perl module
+/ CLI script 'ack'
 
 **Command**: `,a`
 
@@ -128,7 +139,7 @@ eunuch.vim: helpers for UNIX
 
 A tree explorer plugin for vim.
 
-**Command:** `ctrl-u`
+**Command:** `Tab`
 
 #### [vim-textobj-user](https://github.com/kana/vim-textobj-user)
 
@@ -158,15 +169,25 @@ Fuzzy file, buffer, mru and tag finder.
 
 Plugin to create and use a scratch Vim buffer.
 
-#### [troydm/easybuffer.vim](https://github.com/troydm/easybuffer.vim)
+#### [easybuffer.vim](https://github.com/troydm/easybuffer.vim)
 
 easybuffer.vim - vim plugin to quickly switch between buffers
 
+#### [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors)
+
+True Sublime Text style multiple selections for Vim
+
 ### Fancy
 
-#### [powerline](https://github.com/Lokaltog/vim-powerline)
+#### [vim-airline](https://github.com/bling/vim-airline)
 
-The ultimate vim statusline utility.
+lean & mean statusline for vim that's light as air
+
+### Indent
+
+#### [indentLine](https://github.com/Yggdroot/indentLine)
+
+A vim plugin to display the indention levels with thin vertical lines (or: any char you like).
 
 ### OS
 
@@ -286,7 +307,7 @@ A filetype, syntax and indent plugin for Clojure.
 
 ### Haskell
 
-[vim-syntax-haskell-cabal](https://github.com/Twinside/vim-syntax-haskell-cabal)
+#### [vim-syntax-haskell-cabal](https://github.com/Twinside/vim-syntax-haskell-cabal)
 
 Syntax file for Haskell's cabal syntax file
 
@@ -294,7 +315,11 @@ Syntax file for Haskell's cabal syntax file
 
 An unpacked copy of the haskellmode vimball. Ping me if it needs updating.
 
-####
+### Elixir
+
+#### [vim-elixir](https://github.com/elixir-lang/vim-elixir)
+
+Vim configuration files for Elixir.
 
 ### Python
 
@@ -306,9 +331,18 @@ pyflakes, pep8, mccabe libraries in vim to provide features like python code
 
 looking for bugs, refactoring and some other useful things.
 
-####
+### Go lang
+Support for go is now available:
 
-#### Clang
+#### [vim-go](https://github.com/fatih/vim-go)
+Full featured Go (golang) support for Vim. vim-go installs automatically all
+necessary binaries for providing seamless Vim integration . It comes with
+pre-defined sensible settings (like auto gofmt on save), has autocomplete,
+snippet support, improved syntax highlighting, go toolchain commands, etc...
+It's highly customizable and has settings for disabling/enabling features
+easily. Do not use it with other Go plugins.
+
+### Clang
 
 #### [vim-clang](https://github.com/LucHermitte/vim-clang)
 
@@ -332,8 +366,7 @@ Module to Interact with libclang (and clang_indexer DB) from Vim.
 
 A Vim color scheme.
 
-####
-[vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
+#### [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 
 precision colorscheme for the vim text editor
 
@@ -352,7 +385,7 @@ A dark colourscheme combining Jellybeans, Solarized and Tomorrow Night.
 
 ## Call for Help
 
-If you have ideas on how to make this Vim configration framework better, don’t hesitate to fork and send pull requests. Thanks!
+If you have ideas on how to make this Vim configuration framework better, don’t hesitate to fork and send pull requests. Thanks!
 
 ### Major Contributors
 
