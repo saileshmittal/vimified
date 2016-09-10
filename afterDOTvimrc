@@ -11,3 +11,6 @@ nnoremap <leader>q :only<cr>
 " Python mode not working well.
 let g:pymode_run=0
 let g:pymode_lint=0
+
+" Show quotes in MacVim for JSON files.
+g:vim_json_syntax_conceal = 0
